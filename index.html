@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Génération IA — Formations IA pour Entreprises</title>
+
+<style>
+
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: "Arial", sans-serif;
+    background: #F3FBFF;
+    color: #002046;
+}
+
+/* -----------------------------------------
+   NAVBAR
+------------------------------------------ */
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #E2FAF3;
+    padding: 0px 35px;
+    border-radius: 14px;
+    margin: 20px auto;
+    height: 95px;
+    width: 92%;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 198, 255, 0.3);
+}
+
+.logo {
+    height: 170px;
+    margin-top: -10px;
+}
+
+/* NAV CENTER */
+.nav-center {
+    display: flex;
+    background: #ffffff;
+    padding: 10px 25px;
+    border-radius: 40px;
+    gap: 25px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.nav-center a,
+.dropbtn {
+    font-size: 16px;
+    color: #002046;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    transition: 0.25s ease;
+}
+
+.nav-center a:hover,
+.dropbtn:hover {
+    color: #00C6FF;
+    transform: translateY(-2px);
+}
+
+.nav-center a::after,
+.dropbtn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #00C6FF, #00FF9D);
+    transition: 0.25s ease;
+    border-radius: 4px;
+}
+
+.nav-center a:hover::after,
+.dropbtn:hover::after {
+    width: 100%;
+}
+
+.nav-cta {
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    padding: 10px 24px;
+    color: #002046;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    background-size: 200% 200%;
+}
+
+.nav-cta:hover {
+    background-position: right;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 198, 255, 0.25),
+                0 4px 10px rgba(0, 255, 157, 0.25);
+}
+
+
+/* -----------------------------------------
+   HERO SECTION
+------------------------------------------ */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: radial-gradient(circle at top, #ffffff, #D4F8FF);
+    position: relative;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    border: 1px solid rgba(0,198,255,0.25);
+    border-radius: 50%;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.35;
+}
+.circle:nth-child(2) {
+    width: 1300px;
+    height: 1300px;
+    top: -420px;
+    opacity: 0.22;
+    border-color: rgba(0,255,157,0.25);
+}
+.circle:nth-child(3) {
+    width: 1600px;
+    height: 1600px;
+    top: -600px;
+    opacity: 0.14;
+    border-color: rgba(0,198,255,0.2);
+}
+
+.hero-badge {
+    display: inline-block;
+    margin-bottom: 20px;
+    padding: 10px 25px;
+    background: white;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #00C6FF;
+    border: 1px solid rgba(0, 198, 255, 0.35);
+    box-shadow: 0 2px 8px rgba(0, 198, 255, 0.15);
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #002046;
+}
+
+.hero h1 span {
+    color: #00C6FF;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 18px auto;
+    font-size: 18px;
+    opacity: 0.85;
+}
+
+/* HERO BUTTONS */
+.hero-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* CONFIG DE BASE */
+.btn {
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s ease-in-out;
+    background-size: 200% 200%;
+    background-position: left; /* ⚠️ obligatoire pour animer */
+}
+
+/* VERSION GRADIENT — EXACTEMENT comme "Prendre rendez-vous" */
+.btn-purple {
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    color: #002046;
+}
+
+.btn-purple:hover {
+    background-position: right;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,198,255,0.25),
+                0 4px 10px rgba(0,255,157,0.25);
+}
+
+/* VERSION OUTLINE AVEC LE MÊME EFFET */
+.btn-outline {
+    background: white;
+    color: #00C6FF;
+    border: 2px solid #00C6FF;
+}
+
+.btn-outline:hover {
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    background-position: right;
+    color: white;
+    border-color: transparent;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,198,255,0.25),
+                0 4px 10px rgba(0,255,157,0.25);
+}
+
+
+/* -----------------------------------------
+   INTRO SECTION
+------------------------------------------ */
+.intro-section {
+    text-align: center;
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-section h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #002046;
+}
+
+.moneyback {
+    font-size: 20px;
+    font-weight: 600;
+    color: #00C6FF;
+    margin-bottom: 35px;
+}
+
+.intro-text {
+    font-size: 20px;
+    line-height: 1.6;
+}
+
+.intro-text strong {
+    color: #00C6FF;
+}
+
+
+/* -----------------------------------------
+   SECTION : Nos formations IA sont faites pour vous si...
+------------------------------------------ */
+
+.target-section {
+    padding: 90px 20px;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.target-subtitle {
+    font-size: 18px;
+    color: #00C6FF;
+    font-weight: 600;
+}
+
+.target-title {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 60px;
+}
+
+.target-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.target-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    padding: 30px 25px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 198, 255, 0.25);
+    box-shadow: 0 4px 20px rgba(0, 198, 255, 0.06);
+    transition: 0.3s ease;
+}
+
+.target-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 198, 255, 0.15),
+                0 6px 15px rgba(0, 255, 157, 0.15);
+}
+
+.icon-check {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.target-button {
+    margin-top: 40px;
+}
+
+
+/* -----------------------------------------
+   PACKS
+------------------------------------------ */
+.packs-section {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.packs-title {
+    font-size: 38px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+.packs-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.pack-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 380px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.pack-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.pack-img {
+    width: 100%;
+    border-radius: 16px;
+}
+
+.pack-btn {
+    display: block;
+    margin-top: 25px;
+    padding: 14px 22px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    color: #002046;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 17px;
+    transition: 0.3s;
+}
+
+.pack-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+}
+
+
+/* SECTION IA – Style DA Bleu/Vert */
+.ia-section {
+    background: linear-gradient(180deg, #EFFFF9, #EAFBFF);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.ia-title {
+    font-size: 48px;
+    font-weight: 900;
+    color: #002046;
+    margin-bottom: 20px;
+}
+
+.ia-subtitle {
+    color: #003060;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* ROWS */
+.ia-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 12px;
+    margin-bottom: 22px;
+    overflow-x: hidden;
+}
+
+/* LOGO CARDS */
+.ia-row img {
+    width: 78px;
+    height: 78px;
+    object-fit: contain;
+    background: white;
+    border-radius: 18px;
+    padding: 14px;
+    border: 1px solid rgba(0, 198, 255, 0.25);
+    transition: 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 200, 255, 0.1);
+}
+
+/* OPACITÉ LIGNES 1 & 3 */
+.low img {
+    opacity: 0.28;
+}
+
+/* LIGNE CENTRALE */
+.normal img {
+    opacity: 1;
+}
+
+/* HOVER */
+.ia-row img:hover {
+    transform: translateY(-6px) scale(1.05);
+    border-color: #00C6FF;
+    box-shadow:
+        0 10px 25px rgba(0, 198, 255, 0.22),
+        0 6px 14px rgba(0, 255, 157, 0.18);
+    opacity: 1 !important;
+}
+
+.stats-section {
+    width: 92%;
+    margin: 60px auto;
+}
+
+.stats-grid {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.top-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bottom-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.stat-card {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 8px 35px rgba(0, 198, 255, 0.12);
+    position: relative;
+    height: 270px;
+}
+
+.stat-card h2 {
+    font-size: 52px;
+    font-weight: 900;
+    margin: 0;
+    color: #002046;
+}
+
+.stat-card h3 {
+    font-size: 22px;
+    margin-top: 6px;
+    font-weight: 700;
+    color: #002046;
+}
+
+.stat-card p {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 80%;
+    color: #002046;
+}
+
+/* GRADIENTS */
+.peach {
+    background: linear-gradient(135deg, #ffd6c9, #ffe8df);
+}
+
+.green {
+    background: linear-gradient(135deg, #d6fff4, #b2f4e3);
+}
+
+.purple {
+    background: linear-gradient(135deg, #f2d9ff, #ead3ff);
+}
+
+.lavender {
+    background: linear-gradient(135deg, #e8d8ff, #d3c3ff);
+}
+
+.blue {
+    background: linear-gradient(135deg, #c8f4ff, #b3ffe7);
+}
+
+/* Dots */
+.dots {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.dots span {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    opacity: 0.85;
+}
+.modal {
+    display: none !important;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+
+    /* NE PAS remettre display:flex ici */
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+.modal.show {
+    display: flex !important;
+}
+/* CONTENEUR DU POPUP */
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden; /* cache ce qui dépasse */
+    padding: 0;
+
+    /* réduit au minimum visible */
+    width: auto;
+    max-width: 90vw;
+    max-height: 90vh;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+/* IMAGE PLEINE LARGEUR SANS BORDURES */
+.modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 90vh; /* image jamais trop grande */
+    display: block;
+    object-fit: contain;
+    margin: 0;
+}
+
+/* GROSSE CROIX EN HAUT À DROITE */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+
+    font-size: 30px;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #002046;
+    cursor: pointer;
+    z-index: 10000;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: 0.2s ease;
+}
+
+.close:hover {
+    background: #00C6FF;
+    color: white;
+    transform: scale(1.15);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="topnav">
+    <img src="logo.png" alt="Génération IA" class="logo">
+
+    <div class="nav-center">
+    <a href="index.html" class="dropbtn">Accueil </a>
+    <a href="particulier.html" class="dropbtn">Formations Particuliers </a>
+    <a href="entreprise.html" class="dropbtn">Formations Entreprise </a>
+    <a href="entreprise-info.html" class="dropbtn">L’Entreprise </a>
+</div>
+
+    <a class="nav-cta" href="mailto:contact@generation-ia.fr">Prendre rendez-vous</a>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <!-- Cercles décoratifs mais NON cliquables -->
+    <div class="circle" style="pointer-events:none;"></div>
+    <div class="circle" style="pointer-events:none;"></div>
+    <div class="circle" style="pointer-events:none;"></div>
+
+    <div class="hero-badge">FORMATION IA POUR PROFESSIONNELS & PARTICULIERS</div>
+
+    <h1>Gagnez en productivité<br> grâce à <span>l’IA</span></h1>
+
+    <p>
+        Formez vos collaborateurs et implémentez les outils IA les plus adaptés
+        à votre entreprise. Priorisez les tâches à forte valeur ajoutée.
+    </p>
+
+    <div class="hero-buttons">
+        <a href="entreprise.html" class="btn btn-purple">Je suis une Entreprise</a>
+        <a href="particulier.html" class="btn btn-outline">Je suis un Particulier</a>
+    </div>
+
+</section>
+
+
+<!-- INTRO -->
+<section class="intro-section">
+    <h2>Formation IA : Intégrer l'IA à votre entreprise</h2>
+    <p class="intro-text">
+        Pour accompagner votre entreprise, quel que soit votre niveau de maturité, 
+        nous avons conçu <strong>deux formules progressives</strong>. <br>
+        De la découverte aux usages avancés, elles vous permettent de passer concrètement à l’action 
+        et de transformer l’IA en <strong>véritable avantage compétitif.</strong>
+    </p>
+</section>
+
+
+<!-- SECTION : Nos formations IA sont faites pour vous si... -->
+<section class="target-section">
+    <h2 class="target-title">Nos formations IA sont faites pour vous si vous...</h2>
+
+    <div class="target-grid">
+        <div class="target-card">
+            <div class="icon-check">✓</div>
+            <p>Voulez gagner du temps et éliminer les tâches répétitives.</p>
+        </div>
+
+        <div class="target-card">
+            <div class="icon-check">✓</div>
+            <p>Cherchez à comprendre l’IA pour l’appliquer concrètement à votre métier.</p>
+        </div>
+
+        <div class="target-card">
+            <div class="icon-check">✓</div>
+            <p>Souhaitez rendre vos équipes plus performantes grâce à des outils simples.</p>
+        </div>
+
+        <div class="target-card">
+            <div class="icon-check">✓</div>
+            <p>Désirez rester compétitif dans un monde qui évolue avec l’IA.</p>
+        </div>
+    </div>
+
+    <div class="target-button">
+        <button class="btn btn-purple">Commencez maintenant</button>
+    </div>
+</section>
+
+
+<!-- PACKS SECTION -->
+<section class="packs-section">
+
+    <h2 class="packs-title">Nos Packs de Formation IA pour Entreprises</h2>
+
+    <div class="packs-container">
+
+        <!-- PACK PREMIUM -->
+        <div class="pack-card">
+            <img src="pack-premium.png" class="pack-img" alt="Pack IA Pro Premium Edition">
+            <h3>Pack IA Pro – Premium Edition</h3>
+            <ul>
+                <li>Formation IA clé-en-main en présentiel</li>
+                <li>Slides professionnelles prêtes à l’emploi</li>
+                <li>Prompts optimisés pour chaque métier</li>
+                <li>Exercices pratiques orientés entreprise</li>
+                <li>Support privé</li>
+                <li>Vidéo explicative complète</li>
+            </ul>
+            <a href="#" class="pack-btn" data-modal="modal-premium">Découvrir</a>
+        </div>
+
+        <!-- PACK CLASSIC -->
+        <div class="pack-card">
+            <img src="pack-classic.png" class="pack-img" alt="Pack IA Pro">
+            <h3>Pack IA Pro – Standard</h3>
+            <ul>
+                <li>Formation IA clé-en-main</li>
+                <li>Slides et prompts prêts à l’emploi</li>
+                <li>Exercices pratiques</li>
+            </ul>
+            <a href="#" class="pack-btn" data-modal="modal-standard">Découvrir</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- MODAL PACK PREMIUM -->
+<div id="modal-premium" class="modal">
+  <div class="modal-content">
+    <span class="close" data-modal="modal-premium">&times;</span>
+    <img src="pack-premium.png" class="modal-img">
+  </div>
+</div>
+
+<!-- MODAL PACK STANDARD -->
+<div id="modal-standard" class="modal">
+  <div class="modal-content">
+    <span class="close" data-modal="modal-standard">&times;</span>
+    <img src="pack-classic.png" class="modal-img">
+  </div>
+</div>
+
+
+
+
+
+<!-- SECTION : Le meilleur des outils IA -->
+<section class="ia-section">
+
+    <h2 class="ia-title">Le meilleur des outils IA</h2>
+
+    <p class="ia-subtitle">
+        Dans nos formations IA, vous découvrez <strong>les meilleures IA du marché</strong> 
+        et apprenez à les utiliser au quotidien. Nous vous aidons à sélectionner les bons outils 
+        et à les intégrer efficacement dans vos processus.
+    </p>
+
+    <!-- LIGNE 1 - ATTÉNUÉE -->
+    <div class="ia-row low">
+        <img src="chatgpt.png">
+        <img src="gemini.png">
+        <img src="claude.png">
+        <img src="mistral.png">
+        <img src="midjourney.webp">
+        <img src="firefly.png">
+        <img src="stablediffusion.webp">
+        <img src="runway.png">
+        <img src="ideogram.png">
+        <img src="sora.png">
+        <img src="elevenlabs.webp">
+        <img src="perplexity.webp">
+    </div>
+
+    <!-- LIGNE 2 - PLEINE -->
+    <div class="ia-row normal">
+        <img src="chatgpt.png">
+        <img src="gemini.png">
+        <img src="claude.png">
+        <img src="mistral.png">
+        <img src="midjourney.webp">
+        <img src="firefly.png">
+        <img src="stablediffusion.webp">
+        <img src="runway.png">
+        <img src="ideogram.png">
+        <img src="sora.png">
+        <img src="elevenlabs.webp">
+        <img src="perplexity.webp">
+    </div>
+
+    <!-- LIGNE 3 - ATTÉNUÉE -->
+    <div class="ia-row low">
+        <img src="chatgpt.png">
+        <img src="gemini.png">
+        <img src="claude.png">
+        <img src="mistral.png">
+        <img src="midjourney.webp">
+        <img src="firefly.png">
+        <img src="stablediffusion.webp">
+        <img src="runway.png">
+        <img src="ideogram.png">
+        <img src="sora.png">
+        <img src="elevenlabs.webp">
+        <img src="perplexity.webp">
+    </div>
+
+</section>
+
+<section class="stats-section">
+
+    <div class="stats-grid top-row">
+        <div class="stat-card peach">
+            <h2>500</h2>
+            <h3>Milliards $</h3>
+            <p>Déjà investis mondialement dans l’IA.</p>
+        </div>
+
+        <div class="stat-card green">
+            <h2>x1.4</h2>
+            <h3>productivité</h3>
+            <p>Grâce notamment à l’automatisation des tâches.</p>
+        </div>
+
+        <div class="stat-card purple">
+            <h2>3/4</h2>
+            <h3>des entreprises</h3>
+            <p>Utilisent déjà l’IA pour automatiser leurs processus internes.</p>
+        </div>
+    </div>
+
+    <div class="stats-grid bottom-row">
+        <div class="stat-card lavender">
+            <h2>70</h2>
+            <h3>Millions d'emplois</h3>
+            <p>Pourraient être transformés par l’IA d’ici quelques années.</p>
+        </div>
+
+        <div class="stat-card blue">
+            <h2>+50%</h2>
+            <h3>d'inscriptions</h3>
+            <p>Dans les formations liées à l’IA</p>
+            <p>en moins de 2 ans.</p>
+            <div class="dots">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- SCRIPT POPUP PACKS -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    // OUVERTURE DES MODALES AVEC data-modal
+    document.querySelectorAll(".pack-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const targetId = btn.dataset.modal;      // ex : "modal-premium"
+            const modal = document.getElementById(targetId);
+            if (modal) {
+                modal.classList.add("show");         // ✅ on ajoute la classe
+            }
+        });
+    });
+
+    // FERMETURE AVEC LA CROIX
+    document.querySelectorAll(".close").forEach(closeBtn => {
+        closeBtn.addEventListener("click", () => {
+            const targetId = closeBtn.dataset.modal;
+            const modal = document.getElementById(targetId);
+            if (modal) {
+                modal.classList.remove("show");      // ✅ on enlève la classe
+            }
+        });
+    });
+
+    // FERMETURE EN CLIQUANT SUR LE FOND SOMBRE
+    document.querySelectorAll(".modal").forEach(modal => {
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {                // clic sur le fond
+                modal.classList.remove("show");      // ✅ on enlève la classe
+            }
+        });
+    });
+
+});
+</script>
+
+
+
+</body>
+</html>

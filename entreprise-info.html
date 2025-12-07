@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L’Entreprise — Génération IA</title>
+
+    <style>
+
+        /* GLOBAL */
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: white;
+            color: #002046;
+            padding-top: 160px;
+        }
+
+        .page-wrapper {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        /* NAVBAR */
+        .topnav {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            height: 95px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: #E2FAF3;
+            padding: 0 35px;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+            box-sizing: border-box;
+            margin-top: 20px;
+
+            z-index: 9999;
+        }
+
+        .logo {
+            height: 170px;
+            margin-top: -10px;
+        }
+
+        .nav-center {
+            display: flex;
+            background: #ffffff;
+            padding: 10px 25px;
+            border-radius: 40px;
+            gap: 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-center a {
+            font-size: 16px;
+            color: #002046;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: 0.25s ease;
+        }
+
+        .nav-center a:hover {
+            color: #00C6FF;
+            transform: translateY(-2px);
+        }
+
+        .nav-center a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #00C6FF, #00FF9D);
+            border-radius: 4px;
+            transition: 0.3s ease;
+        }
+
+        .nav-center a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #00C6FF, #00FF9D);
+            padding: 10px 24px;
+            color: #002046;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+        }
+
+        /* HEADER */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            gap: 40px;
+        }
+
+        .header-left h1 {
+            font-size: 48px;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        .header-left span {
+            color: #00C6FF;
+        }
+
+        .header-right {
+            font-size: 20px;
+            opacity: 0.85;
+            max-width: 500px;
+        }
+
+        .header-divider {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00C6FF, #00FF9D);
+            opacity: 0.4;
+            border-radius: 6px;
+            margin: 40px 0;
+        }
+
+        /* SECTION ENTREPRISE */
+        .entreprise-section {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .entreprise-logo img {
+            width: 520px;
+            opacity: 0.95;
+        }
+
+        .entreprise-logo img:hover {
+            transform: scale(1.03);
+            transition: 0.3s ease;
+        }
+
+        .details {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="topnav">
+    <img src="logo.png" alt="Génération IA" class="logo">
+
+    <div class="nav-center">
+        <a href="index.html">Accueil</a>
+        <a href="particulier.html">Formations Particuliers </a>
+        <a href="entreprise.html">Formations Entreprise </a>
+        <a href="entreprise-info.html">L’Entreprise </a>
+    </div>
+
+    <a class="nav-cta" href="mailto:academy.generation.ia@gmail.com">Prendre rendez-vous</a>
+</nav>
+
+
+<!-- CONTENU -->
+<div class="page-wrapper">
+
+    <section class="header-section">
+        <div class="header-left">
+            <h1>L’<span>Entreprise</span></h1>
+        </div>
+
+        <div class="header-right">
+            Découvrez notre vision, nos engagements, notre équipe  
+            et notre expertise dans l’intégration de l’intelligence artificielle  
+            au sein des organisations.
+        </div>
+    </section>
+
+    <div class="header-divider"></div>
+
+    <section class="entreprise-section">
+
+        <div class="entreprise-logo">
+            <img src="logo.png" alt="Logo Génération IA">
+        </div>
+
+        <div class="details">
+            <p>
+                Chez <strong>Génération IA</strong>, nous accompagnons les entreprises dans leur transformation
+                digitale grâce à des solutions d’intelligence artificielle adaptées et concrètes.
+            </p>
+
+            <p>
+                Notre mission : aider vos équipes à monter en compétences, automatiser vos processus,
+                améliorer la productivité et préparer votre organisation aux outils de demain.
+            </p>
+
+            <p>
+                Formation, consulting, déploiement IA, optimisation de workflows,
+                accompagnement personnalisé…  
+                Nous mettons notre expertise au service de votre croissance.
+            </p>
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

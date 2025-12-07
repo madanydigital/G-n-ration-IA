@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formations IA — Entreprise</title>
+
+    <style>
+
+        /* -----------------------------------------
+           GLOBAL
+        ------------------------------------------ */
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: white;
+            color: #002046;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        /* -----------------------------------------
+           NAVBAR — NON FIXE (comme sur particulier)
+        ------------------------------------------ */
+        .topnav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: #E2FAF3;
+            padding: 0px 35px;
+            border-radius: 14px;
+
+            height: 95px;
+            width: 92%;
+            margin: 20px auto;
+
+            box-sizing: border-box;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+        }
+
+        .logo {
+            height: 170px;
+            margin-top: -10px;
+        }
+
+        .nav-center {
+            display: flex;
+            background: #ffffff;
+            padding: 10px 25px;
+            border-radius: 40px;
+            gap: 25px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .nav-center a {
+            font-size: 16px;
+            color: #002046;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            transition: 0.25s ease;
+        }
+
+        .nav-center a:hover {
+            color: #00C6FF;
+            transform: translateY(-2px);
+        }
+
+        .nav-center a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #00C6FF, #00FF9D);
+            transition: 0.25s ease;
+            border-radius: 4px;
+        }
+
+        .nav-center a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #00C6FF, #00FF9D);
+            padding: 10px 24px;
+            color: #002046;
+            font-weight: bold;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s ease-in-out;
+            background-size: 200% 200%;
+        }
+
+        .nav-cta:hover {
+            background-position: right;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 198, 255, 0.25),
+                        0 4px 10px rgba(0, 255, 157, 0.25);
+        }
+
+        /* -----------------------------------------
+           CONTENU ENTREPRISE (GAUCHE)
+        ------------------------------------------ */
+        h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-top: 10px;
+            line-height: 1.2;
+        }
+
+        h1 span {
+            color: #00C6FF;
+        }
+
+        .sub {
+            font-size: 20px;
+            margin-top: 15px;
+            opacity: 0.85;
+            max-width: 530px;
+        }
+
+        .badges {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .badge {
+            background: #E8FBFF;
+            color: #009AE0;
+            padding: 8px 18px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 198, 255, 0.3);
+        }
+
+        /* -----------------------------------------
+           LOGO ENTREPRISE — REMONTÉ
+        ------------------------------------------ */
+        .entreprise-logo {
+            margin-top: -15px; /* ⭐ EXACTEMENT comme particulier */
+        }
+
+        .entreprise-logo img {
+            width: 500px;
+            max-width: 95%;
+            opacity: 0.97;
+            transition: 0.35s ease;
+        }
+
+        .entreprise-logo img:hover {
+            transform: scale(1.03);
+            opacity: 1;
+        }
+
+        /* -----------------------------------------
+           FORMULAIRE ENTREPRISE (DROITE)
+        ------------------------------------------ */
+        .form-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            width: 420px;
+        }
+
+        .form-card h2 {
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #002046;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.2s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: #00C6FF;
+            box-shadow: 0 0 5px rgba(0, 198, 255, 0.5);
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #00C6FF, #00FF9D);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            background-size: 200% 200%;
+        }
+
+        button:hover {
+            background-position: right;
+            transform: translateY(-3px) scale(1.03);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR (non fixe, comme tu veux) -->
+<nav class="topnav">
+    <img src="logo.png" alt="Génération IA" class="logo">
+
+    <div class="nav-center">
+        <a href="index.html">Accueil</a>
+        <a href="particulier.html">Formations Particuliers</a>
+        <a href="entreprise.html">Formations Entreprise</a>
+        <a href="entreprise-info.html">L’Entreprise</a>
+    </div>
+
+    <a class="nav-cta" href="mailto:academy.generation.ia@gmail.com">Prendre rendez-vous</a>
+</nav>
+
+
+<!-- CONTENU PRINCIPAL -->
+<div class="container">
+
+    <!-- TEXTE ENTREPRISE -->
+    <div>
+        <h1>Formez vos équipes à l’IA<br>pour gagner en <span>productivité</span></h1>
+
+        <p class="sub">
+            Boostez l’efficacité de vos collaborateurs en intégrant les outils IA les plus adaptés :
+            automatisation, gestion de projet, analyse, création de contenu, support client…
+        </p>
+
+        <div class="badges">
+            <div class="badge">Accompagnement équipe</div>
+            <div class="badge">Formation 100% digitale</div>
+            <div class="badge">Formations en présentiel</div>
+        </div>
+
+        <div class="entreprise-logo">
+            <img src="logo.png" alt="Logo Génération IA">
+        </div>
+    </div>
+
+    <!-- FORMULAIRE ENTREPRISE -->
+    <div class="form-card">
+        <h2>Recevoir les programmes</h2>
+
+        <input type="text" placeholder="Nom de l’entreprise*" required>
+        <input type="text" placeholder="Votre nom*" required>
+        <input type="email" placeholder="Email professionnel*" required>
+        <input type="tel" placeholder="Téléphone">
+
+        <select>
+            <option>Votre objectif</option>
+            <option>Former toute l’équipe</option>
+            <option>Créer un programme sur mesure</option>
+            <option>Améliorer la productivité interne</option>
+            <option>Initier un département IA</option>
+        </select>
+
+        <textarea placeholder="Précisez votre besoin (optionnel)" rows="5"></textarea>
+
+        <button>Envoyer</button>
+    </div>
+
+</div>
+
+</body>
+</html>
