@@ -610,59 +610,110 @@ body {
     transform: scale(1.15);
 }
 /* ==============================
-   VERSION MOBILE (max 768px)
+   NAVBAR MOBILE
    ============================== */
 @media (max-width: 768px) {
 
-    /* NAVBAR */
+    /* Barre du haut */
     .topnav {
-        flex-direction: column;
-        height: auto;
-        padding: 15px;
-        gap: 10px;
-        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 18px;
+        height: 70px;
+        border-radius: 0;
     }
 
+    /* Logo plus petit */
     .logo {
-        height: 120px;
-        margin: 0 auto;
+        height: 55px;
+        margin: 0;
     }
 
-    .nav-center {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 8px 15px;
-        gap: 10px;
-    }
-
-    .nav-center a {
-        font-size: 14px;
-    }
-
+    /* Menu desktop invisible */
+    .nav-center,
     .nav-cta {
-        margin-top: 10px;
-        font-size: 14px;
-        padding: 8px 15px;
+        display: none;
     }
 
-    /* HERO */
+    /* Bouton hamburger rond */
+    .mobile-menu-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 28px;
+        color: #002046;
+        border: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        cursor: pointer;
+    }
+
+    /* Contenu du MENU MOBILE */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: white;
+        box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+        padding: 40px 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        transition: 0.35s ease;
+        z-index: 9999;
+    }
+
+    .mobile-menu.show {
+        right: 0;
+    }
+
+    .mobile-menu a {
+        font-size: 20px;
+        font-weight: 600;
+        text-decoration: none;
+        color: #002046;
+    }
+
+    .mobile-close {
+        font-size: 34px;
+        color: #002046;
+        cursor: pointer;
+        align-self: flex-end;
+    }
+
+
+
+    /* ==============================
+       HERO SECTION
+       ============================== */
+
     .hero {
-        padding: 60px 20px;
+        padding: 80px 20px;
+        text-align: center;
     }
 
     .hero h1 {
         font-size: 32px;
         line-height: 1.2;
+        margin-bottom: 15px;
     }
 
     .hero p {
         font-size: 16px;
         width: 90%;
+        margin: 0 auto;
     }
 
     .hero-buttons {
         flex-direction: column;
         gap: 12px;
+        margin-top: 25px;
     }
 
     .btn {
@@ -670,10 +721,16 @@ body {
         text-align: center;
     }
 
-    /* PACKS */
+
+
+    /* ==============================
+       PACKS MOBILE
+       ============================== */
+
     .packs-container {
         flex-direction: column;
         gap: 30px;
+        width: 100%;
     }
 
     .pack-card {
@@ -681,19 +738,40 @@ body {
         margin: 0 auto;
     }
 
-    /* TARGET CARDS */
+
+
+    /* ==============================
+       TARGET SECTION
+       ============================== */
+
     .target-grid {
         grid-template-columns: 1fr;
     }
 
-    /* IA Row (logos trop large) */
+    .target-card {
+        padding: 22px;
+    }
+
+
+
+    /* ==============================
+       IA SECTION
+       ============================== */
+
     .ia-row img {
         width: 60px;
         height: 60px;
+        object-fit: contain;
     }
 
-    /* STATS */
-    .top-row, .bottom-row {
+
+
+    /* ==============================
+       STATS SECTION
+       ============================== */
+
+    .top-row,
+    .bottom-row {
         grid-template-columns: 1fr;
     }
 
@@ -701,7 +779,13 @@ body {
         height: auto;
         padding: 25px;
     }
+
+    /* Supprimer les ronds */
+    .dots {
+        display: none !important;
+    }
 }
+
 
 </style>
 </head>
@@ -713,14 +797,29 @@ body {
     <img src="logo.png" alt="Génération IA" class="logo">
 
     <div class="nav-center">
-    <a href="index.html" class="dropbtn">Accueil </a>
-    <a href="particulier.html" class="dropbtn">Formations Particuliers </a>
-    <a href="entreprise.html" class="dropbtn">Formations Entreprise </a>
-    <a href="entreprise-info.html" class="dropbtn">L’Entreprise </a>
-</div>
+        <a href="index.html" class="dropbtn">Accueil</a>
+        <a href="particulier.html" class="dropbtn">Formations Particuliers</a>
+        <a href="entreprise.html" class="dropbtn">Formations Entreprise</a>
+        <a href="entreprise-info.html" class="dropbtn">L’Entreprise</a>
+    </div>
+
+    <!-- Bouton menu mobile -->
+    <div class="mobile-menu-btn" onclick="toggleMenu()">≡</div>
 
     <a class="nav-cta" href="mailto:contact@generation-ia.fr">Prendre rendez-vous</a>
 </nav>
+
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-close" onclick="toggleMenu()">×</div>
+    
+    <a href="index.html">Accueil</a>
+    <a href="particulier.html">Formations Particuliers</a>
+    <a href="entreprise.html">Formations Entreprises</a>
+    <a href="entreprise-info.html">L’Entreprise</a>
+    <a href="mailto:contact@generation-ia.fr">Contact</a>
+</div>
+
 
 
 <!-- HERO -->
@@ -993,6 +1092,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("show");
+}
+</script>
 
 
 </body>
