@@ -609,6 +609,99 @@ body {
     color: white;
     transform: scale(1.15);
 }
+/* ==============================
+   VERSION MOBILE (max 768px)
+   ============================== */
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    .topnav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .logo {
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    .nav-center {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 8px 15px;
+        gap: 10px;
+    }
+
+    .nav-center a {
+        font-size: 14px;
+    }
+
+    .nav-cta {
+        margin-top: 10px;
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    /* HERO */
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .hero p {
+        font-size: 16px;
+        width: 90%;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* PACKS */
+    .packs-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .pack-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* TARGET CARDS */
+    .target-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* IA Row (logos trop large) */
+    .ia-row img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* STATS */
+    .top-row, .bottom-row {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        height: auto;
+        padding: 25px;
+    }
+}
 
 </style>
 </head>
