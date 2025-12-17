@@ -785,8 +785,85 @@ body {
         display: none !important;
     }
 }
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 60px;
+    position: relative;
+    z-index: 2;
+}
 
+.hero-content {
+    text-align: center;
+}
 
+.hero-visual img {
+    width: 100%;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+}
+.hero-visual {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-visual img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Effet au survol */
+.hero-visual:hover img {
+    transform: scale(1.02) translateY(-6px);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25);
+}
+.intro-ia {
+    padding: 100px 20px;
+}
+
+.intro-ia-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.intro-ia-content {
+    text-align: center;
+}
+
+.intro-ia-content h2 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #002046;
+    margin-bottom: 30px;
+}
+
+.intro-ia-content p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.intro-ia-content strong {
+    color: #00C6FF;
+}
+
+.intro-ia-visual img {
+    width: 100%;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover image */
+.intro-ia-visual:hover img {
+    transform: scale(1.04) translateY(-6px);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25);
+}
 </style>
 </head>
 
@@ -803,9 +880,6 @@ body {
         <a href="entreprise-info.html" class="dropbtn">L’Entreprise</a>
     </div>
 
-    <!-- Bouton menu mobile -->
-    <div class="mobile-menu-btn" onclick="toggleMenu()"></div>
-
     <a class="nav-cta" href="mailto:contact@generation-ia.fr">Prendre rendez-vous</a>
 </nav>
 
@@ -813,37 +887,75 @@ body {
 <!-- HERO -->
 <section class="hero">
 
-    <!-- Cercles décoratifs mais NON cliquables -->
+    <!-- Cercles décoratifs -->
     <div class="circle" style="pointer-events:none;"></div>
     <div class="circle" style="pointer-events:none;"></div>
     <div class="circle" style="pointer-events:none;"></div>
 
-    <div class="hero-badge">FORMATION IA POUR PROFESSIONNELS & PARTICULIERS</div>
+    <div class="hero-container">
 
-    <h1>Gagnez en productivité<br> grâce à <span>l’IA</span></h1>
+        <!-- TEXTE À GAUCHE -->
+        <div class="hero-content">
 
-    <p>
-        Formez vos collaborateurs et implémentez les outils IA les plus adaptés
-        à votre entreprise. Priorisez les tâches à forte valeur ajoutée.
-    </p>
+            <div class="hero-badge">
+                FORMATION IA POUR PROFESSIONNELS & PARTICULIERS
+            </div>
 
-    <div class="hero-buttons">
-        <a href="entreprise.html" class="btn btn-purple">Je suis une Entreprise</a>
-        <a href="particulier.html" class="btn btn-outline">Je suis un Particulier</a>
+            <h1>Gagnez en productivité<br> grâce à <span>l’IA</span></h1>
+
+            <p>
+                Formez vos collaborateurs et implémentez les outils IA les plus adaptés
+                à votre entreprise. Priorisez les tâches à forte valeur ajoutée.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="entreprise.html" class="btn btn-purple">Je suis une Entreprise</a>
+                <a href="particulier.html" class="btn btn-outline">Je suis un Particulier</a>
+            </div>
+
+        </div>
+
+        <!-- IMAGE À DROITE -->
+        <div class="hero-visual">
+            <img src="mode-de-vie-des-personnes-au-bureau.jpg"
+                 alt="Formation IA en entreprise">
+        </div>
+
     </div>
 
 </section>
 
 
-<!-- INTRO -->
-<section class="intro-section">
-    <h2>Formation IA : Intégrer l'IA à votre entreprise</h2>
-    <p class="intro-text">
-        Pour accompagner votre entreprise, quel que soit votre niveau de maturité, 
-        nous avons conçu <strong>deux formules progressives</strong>. <br>
-        De la découverte aux usages avancés, elles vous permettent de passer concrètement à l’action 
-        et de transformer l’IA en <strong>véritable avantage compétitif.</strong>
-    </p>
+<!-- INTRO IA ENTREPRISE -->
+<section class="intro-ia">
+
+    <div class="intro-ia-container">
+
+        <!-- TEXTE À GAUCHE -->
+        <div class="intro-ia-content">
+
+            <h2>Formation IA : Intégrer l'IA à votre entreprise</h2>
+
+            <p>
+                Pour accompagner votre entreprise, quel que soit votre niveau de maturité,
+                nous avons conçu <strong>deux formules progressives</strong>.
+            </p>
+
+            <p>
+                De la découverte aux usages avancés, elles vous permettent de passer
+                concrètement à l’action et de transformer l’IA en
+                <strong>véritable avantage compétitif.</strong>
+            </p>
+
+        </div>
+
+        <!-- IMAGE À DROITE -->
+        <div class="intro-ia-visual">
+            <img src="ordinateurcanva.png" alt="Formation IA en entreprise">
+        </div>
+
+    </div>
+
 </section>
 
 
