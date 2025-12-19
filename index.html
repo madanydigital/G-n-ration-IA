@@ -106,10 +106,15 @@ body {
    HERO SECTION
 ------------------------------------------ */
 .hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: radial-gradient(circle at top, #ffffff, #D4F8FF);
     position: relative;
+    padding: 140px 20px;
+    background:
+        linear-gradient(
+            rgba(0, 32, 70, 0.55),
+            rgba(0, 32, 70, 0.55)
+        ),
+        url("composition-de-bureau-vue-de-dessus.jpg") center / cover no-repeat;
+    color: white;
     overflow: hidden;
 }
 
@@ -153,10 +158,10 @@ body {
 }
 
 .hero h1 {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 52px;
+    font-weight: 900;
     margin-top: 30px;
-    color: #002046;
+    color: white;
 }
 
 .hero h1 span {
@@ -167,8 +172,12 @@ body {
     max-width: 600px;
     margin: 18px auto;
     font-size: 18px;
-    opacity: 0.85;
+    color: rgba(255,255,255,0.9);
 }
+.hero-badge {
+    background: rgba(255,255,255,0.95);
+}
+
 
 /* HERO BUTTONS */
 .hero-buttons {
@@ -786,12 +795,9 @@ body {
     }
 }
 .hero-container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: 60px;
+    text-align: center;
     position: relative;
     z-index: 2;
 }
@@ -801,22 +807,21 @@ body {
 }
 
 .hero-visual img {
-    width: 100%;
-    border-radius: 28px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.18);
-}
-.hero-visual {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
+    width: 95%;
+    max-width: 480px;
+    height: auto;
 
-.hero-visual img {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* IMPORTANT : pas de bloc */
+    border-radius: 0;
+    box-shadow: none;
+
+    /* fluidité */
+    transition: transform 0.4s ease;
 }
 
 /* Effet au survol */
 .hero-visual:hover img {
-    transform: scale(1.02) translateY(-6px);
-    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05) translateY(-8px);
 }
 .intro-ia {
     padding: 100px 20px;
@@ -913,12 +918,6 @@ body {
                 <a href="particulier.html" class="btn btn-outline">Je suis un Particulier</a>
             </div>
 
-        </div>
-
-        <!-- IMAGE À DROITE -->
-        <div class="hero-visual">
-            <img src="mode-de-vie-des-personnes-au-bureau.jpg"
-                 alt="Formation IA en entreprise">
         </div>
 
     </div>
