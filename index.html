@@ -14,91 +14,166 @@ body {
     background: #F3FBFF;
     color: #002046;
 }
+/* ===============================
+   NAVBAR STYLE MISTER IA (ADAPTÉ)
+================================ */
 
-/* -----------------------------------------
-   NAVBAR
------------------------------------------- */
-.topnav {
-    display: flex;
-    justify-content: space-between;
+.navbar {
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    background: #E2FAF3;
-    padding: 0px 35px;
-    border-radius: 14px;
-    margin: 20px auto;
-    height: 95px;
-    width: 92%;
-    box-sizing: border-box;
-    border: 1px solid rgba(0, 198, 255, 0.3);
 }
 
-.logo {
-    height: 170px;
-    margin-top: -10px;
-}
 
-/* NAV CENTER */
-.nav-center {
+/* logo à gauche */
+.navbar-logo {
+    justify-self: start;
+    height: 60px;
     display: flex;
-    background: #ffffff;
-    padding: 10px 25px;
-    border-radius: 40px;
-    gap: 25px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    align-items: center;
 }
 
-.nav-center a,
-.dropbtn {
-    font-size: 16px;
-    color: #002046;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-weight: 500;
+/* bouton à droite */
+.navbar-cta {
+    position: absolute;
+    right: 24px;
+}
+
+
+.navbar-logo {
     position: relative;
-    transition: 0.25s ease;
+    height: 60px; /* hauteur FIXE de la navbar */
+    display: flex;
+    align-items: center;
 }
 
-.nav-center a:hover,
-.dropbtn:hover {
-    color: #00C6FF;
-    transform: translateY(-2px);
+.navbar-logo img {
+    height: 120px;        /* ⬅️ LOGO PLUS GRAND */
+    width: auto;
+    position: absolute;  /* ⬅️ clé du fix */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.nav-center a::after,
-.dropbtn::after {
+/* MENU */
+.navbar-menu {
+    display: flex;
+    align-items: center; /* ⬅️ FIX */
+    gap: 28px;
+}
+
+.navbar-menu a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    color: #002046;
+    position: relative;
+    padding: 4px 0;
+}
+
+/* underline animée */
+.navbar-menu a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -3px;
+    bottom: -6px;
     width: 0%;
     height: 2px;
-    background: linear-gradient(90deg, #00C6FF, #00FF9D);
-    transition: 0.25s ease;
-    border-radius: 4px;
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    transition: 0.3s ease;
 }
 
-.nav-center a:hover::after,
-.dropbtn:hover::after {
+.navbar-menu a:hover::after,
+.navbar-menu a.active::after {
     width: 100%;
 }
 
-.nav-cta {
-    background: linear-gradient(135deg, #00C6FF, #00FF9D);
-    padding: 10px 24px;
-    color: #002046;
-    font-weight: bold;
-    border-radius: 10px;
+/* CTA */
+.navbar-cta .btn-nav {
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
     text-decoration: none;
-    transition: 0.3s ease-in-out;
-    background-size: 200% 200%;
+
+    background: linear-gradient(135deg, #00C6FF, #00FF9D);
+    color: #002046;
+
+    transition: 0.3s ease;
 }
 
-.nav-cta:hover {
-    background-position: right;
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 20px rgba(0, 198, 255, 0.25),
-                0 4px 10px rgba(0, 255, 157, 0.25);
+.navbar-cta .btn-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,198,255,0.3);
+}
+/* ===============================
+   DROPDOWN FORMATIONS
+================================ */
+
+.nav-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-trigger {
+    cursor: pointer;
+}
+
+/* menu caché */
+.dropdown-menu {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: white;
+    border-radius: 14px;
+    padding: 10px 0;
+    min-width: 220px;
+
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    border: 1px solid #eee;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s ease;
+    z-index: 1000;
+}
+
+/* liens du dropdown */
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #002046;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background: #F3FBFF;
+    color: #00C6FF;
+}
+
+/* affichage au hover */
+.nav-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+}
+
+.hero {
+    margin-top: 0; /* ⬅ colle l’image à la navbar */
 }
 
 
@@ -879,18 +954,46 @@ body {
 <body>
 
 <!-- NAVBAR -->
-<nav class="topnav">
-    <img src="logo.png" alt="Génération IA" class="logo">
+<header class="navbar">
+    <div class="navbar-container">
 
-    <div class="nav-center">
-        <a href="index.html" class="dropbtn">Accueil</a>
-        <a href="particulier.html" class="dropbtn">Formations Particuliers</a>
-        <a href="entreprise.html" class="dropbtn">Formations Entreprise</a>
-        <a href="entreprise-info.html" class="dropbtn">L’Entreprise</a>
+        <!-- LOGO -->
+        <div class="navbar-logo">
+            <img src="logo.png" alt="Génération IA">
+        </div>
+
+       <nav class="navbar-menu">
+
+    <a href="index.html" class="active">Accueil</a>
+
+    <div class="nav-dropdown">
+        <a href="particulier.html" class="dropdown-trigger">
+            Formations ▾
+        </a>
+
+        <div class="dropdown-menu">
+            <a href="particulier.html">Formation Particulier</a>
+            <a href="entreprise.html">Formation Entreprise</a>
+        </div>
     </div>
 
-    <a class="nav-cta" href="mailto:contact@generation-ia.fr">Prendre rendez-vous</a>
+    <a href="entreprise-info.html">L’Entreprise</a>
+    <a href="blog.html">Blog</a>
+
 </nav>
+
+
+        <!-- CTA -->
+        <div class="navbar-cta">
+            <a href="contact.html" class="btn-nav">
+                Prendre rendez-vous
+            </a>
+        </div>
+
+    </div>
+</header>
+
+
 
 
 <!-- HERO -->
